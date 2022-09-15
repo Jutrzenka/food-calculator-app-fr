@@ -2,10 +2,11 @@ import {Box, Center, Text} from "@chakra-ui/react";
 import {ReactNode} from "react";
 
 interface Props {
+    header?: string,
     children?: ReactNode,
 }
 
-export const MainArticle = ({children}:Props) => {
+export const MainArticle = ({header, children}:Props) => {
     return (
         <div className="MainArticle">
             <Box width='auto' minWidth='60vw' maxWidth='80vw' marginTop='5vh' bg='green.50' boxShadow='2xl' rounded='2xl'>
@@ -17,7 +18,7 @@ export const MainArticle = ({children}:Props) => {
                         fontSize='6xl'
                         fontWeight='extrabold'
                     >
-                        MegaFoodCalc:
+                        {header}
                     </Text>
                 </Center>
                 </Box>
