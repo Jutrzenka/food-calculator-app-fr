@@ -1,4 +1,4 @@
-import {Center, Text} from "@chakra-ui/react";
+import {Center} from "@chakra-ui/react";
 import {HallwayNavigationMenu} from "../../components/navigation/HallwayNavigationMenu/HallwayNavigationMenu";
 import {MainArticle} from "../../components/common/MainArticle/MainArticle";
 import {TextArticle} from "../../components/common/TextArticle/TextArticle";

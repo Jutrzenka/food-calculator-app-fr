@@ -1,35 +1,56 @@
 import {HallwayNavigationMenu} from "../../components/navigation/HallwayNavigationMenu/HallwayNavigationMenu";
-import {Box, Button, Flex, FormControl, FormLabel, Input, Text, VStack} from "@chakra-ui/react";
+import {Box, Button, Flex, FormControl, FormLabel, Input, Link, Spinner, Text, useToast, VStack} from "@chakra-ui/react";
 import {useFormik} from "formik";
+import {Link as ReactLink, useNavigate} from "react-router-dom";
 import {useFetch} from "../../utils/hooks/useFetch";
 
-export const RegisterView = () => {
+export const LoginView = () => {
     const [data, loading, error, setRequest] = useFetch(null)
+    const toast = useToast()
+    const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             email: "",
-            name: "",
-            surname: "",
+            password: "",
         },
-        onSubmit: ({email, name, surname}) => {
-            setRequest('http://localhost:3000/api/auth/register',{
-                method: 'PUT',
+        onSubmit: ({email, password}) => {
+            toast({
+                title: 'Trwa logowanie',
+                position: 'bottom-left',
+                status: 'loading',
+                duration: 6000,
+                isClosable: true,
+            })
+            setRequest('http://localhost:3000/api/auth/login', {
+                method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     email,
-                    name,
-                    surname
+                    password,
                 })
             })
         }
     });
+    if (data?.success) {
+        navigate('/register', {replace: true});
+        toast.closeAll();
+    }
+    if (error) {
+        toast({
+            title: 'Logowanie nie powiodło się',
+            position: 'bottom-left',
+            status: 'error',
+            duration: 6000,
+            isClosable: true,
+        })
+    }
     return (
-        <div className='RegisterView'>
+        <div className='LoginView'>
             <HallwayNavigationMenu/>
-            <Flex align="center" justify="center" minH='80vh' mt={25}>
+            <Flex align="center" justify="center" minH="80vh" mt={25}>
                 <Box bgGradient='linear(to-l, green.100, green.200)' p={12} rounded="md" boxShadow='2xl' minW='25vw'>
                     <Text
                         bgGradient='linear(to-l, green.600, green.900)'
@@ -38,7 +59,7 @@ export const RegisterView = () => {
                         fontWeight='bold'
                         pb={6}
                     >
-                        Rejestracja
+                        Logowanie
                     </Text>
                     <form onSubmit={formik.handleSubmit}>
                         <VStack spacing={6} align="flex-start">
@@ -54,29 +75,28 @@ export const RegisterView = () => {
                                 />
                             </FormControl>
                             <FormControl>
-                                <FormLabel>Imię</FormLabel>
+                                <FormLabel htmlFor="password">Hasło</FormLabel>
                                 <Input
-                                    id="name"
-                                    name="name"
-                                    type="text"
+                                    id="password"
+                                    name="password"
+                                    type="password"
                                     variant="filled"
                                     onChange={formik.handleChange}
-                                    value={formik.values.name}
+                                    value={formik.values.password}
                                 />
                             </FormControl>
-                            <FormControl>
-                                <FormLabel>Nazwisko</FormLabel>
-                                <Input
-                                    id="surname"
-                                    name="surname"
-                                    type="text"
-                                    variant="filled"
-                                    onChange={formik.handleChange}
-                                    value={formik.values.surname}
-                                />
-                            </FormControl>
-                            <Button type="submit" colorScheme="green" width="full">
-                                Zarejestruj
+                                <Text>
+                                    Nie masz konta?{' '}
+                                    <Link as={ReactLink} color='green.900' fontWeight='bold' to='/register'>
+                                        Zarejestruj się tutaj!
+                                    </Link>
+                                </Text>
+                            <Button
+                                colorScheme='green'
+                                type='submit'
+                                w='full'
+                            >
+                                {loading ? <Spinner/> : 'Zaloguj'}
                             </Button>
                         </VStack>
                     </form>
