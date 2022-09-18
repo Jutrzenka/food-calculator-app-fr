@@ -5,6 +5,7 @@ import { HomeView } from './views/Home/HomeView';
 import { LoginView } from './views/Login/LoginView';
 import { AboutView } from './views/About/AboutView';
 import { RegisterView } from './views/Register/RegisterView';
+import {VerifyAccountView} from "./views/VeriffyAccount/VerifyAccountView";
 
 export const App = () => {
   return (
@@ -23,12 +24,13 @@ export const App = () => {
               bg='blackAlpha.300'
               backdropFilter='blur(20px)'
           >
-          <Routes>
-            <Route path="/" element={<HomeView />} />
-            <Route path="/login" element={<LoginView />} />
-            <Route path="/register" element={<RegisterView />} />
-            <Route path="/about" element={<AboutView />} />
-          </Routes>
+              <Routes>
+                  <Route path="/" element={<HomeView />} />
+                  <Route path="/login" element={<LoginView />} />
+                  <Route path="/register" element={<RegisterView />} />
+                  <Route path="/verify/:email/:registerCode" element={<VerifyAccountView />} />
+                  <Route path="/about" element={<AboutView />} />
+              </Routes>
           </Box>
         </Box>
       </div>

@@ -3,6 +3,7 @@ import {Box, Button, Flex, FormControl, FormLabel, Input, Link, Spinner, Text, u
 import {useFormik} from "formik";
 import {Link as ReactLink, useNavigate} from "react-router-dom";
 import {useFetch} from "../../utils/hooks/useFetch";
+import {mainConfig} from "../../config/mainConfig";
 
 export const LoginView = () => {
     const [data, loading, error, setRequest] = useFetch(null)
@@ -21,7 +22,7 @@ export const LoginView = () => {
                 duration: 6000,
                 isClosable: true,
             })
-            setRequest('http://localhost:3000/api/auth/login', {
+            setRequest(`${mainConfig.url}/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

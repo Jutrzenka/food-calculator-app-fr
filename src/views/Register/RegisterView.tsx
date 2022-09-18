@@ -2,6 +2,7 @@ import {HallwayNavigationMenu} from "../../components/navigation/HallwayNavigati
 import {Box, Button, Flex, FormControl, FormLabel, Input, Spinner, Text, useToast, VStack} from "@chakra-ui/react";
 import {useFormik} from "formik";
 import {useFetch} from "../../utils/hooks/useFetch";
+import { mainConfig } from "../../config/mainConfig";
 
 export const RegisterView = () => {
     const [data, loading, error, setRequest] = useFetch(null)
@@ -20,7 +21,7 @@ export const RegisterView = () => {
                 duration: 6000,
                 isClosable: true,
             })
-            setRequest('http://localhost:3000/api/auth/register',{
+            setRequest(`${mainConfig.url}/api/auth/register`,{
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
