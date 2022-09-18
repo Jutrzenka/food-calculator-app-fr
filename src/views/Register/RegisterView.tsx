@@ -1,10 +1,11 @@
 import {HallwayNavigationMenu} from "../../components/navigation/HallwayNavigationMenu/HallwayNavigationMenu";
-import {Box, Button, Flex, FormControl, FormLabel, Input, Text, VStack} from "@chakra-ui/react";
+import {Box, Button, Flex, FormControl, FormLabel, Input, Spinner, Text, useToast, VStack} from "@chakra-ui/react";
 import {useFormik} from "formik";
 import {useFetch} from "../../utils/hooks/useFetch";
 
 export const RegisterView = () => {
     const [data, loading, error, setRequest] = useFetch(null)
+    const toast = useToast()
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -12,6 +13,13 @@ export const RegisterView = () => {
             surname: "",
         },
         onSubmit: ({email, name, surname}) => {
+            toast({
+                title: 'Trwa tworzenie konta',
+                position: 'bottom-left',
+                status: 'loading',
+                duration: 6000,
+                isClosable: true,
+            })
             setRequest('http://localhost:3000/api/auth/register',{
                 method: 'PUT',
                 headers: {
@@ -26,6 +34,31 @@ export const RegisterView = () => {
             })
         }
     });
+    if (data?.success) {
+        toast({
+            title: 'Tworzenie konta powiodło się',
+            position: 'bottom-left',
+            status: 'success',
+            duration: 6000,
+            isClosable: true,
+        })
+        toast({
+            title: 'Potwierdz rejestrację na podanym adresie e-mail',
+            position: 'bottom-left',
+            status: 'info',
+            duration: 6000,
+            isClosable: true,
+        })
+    }
+    if (error) {
+        toast({
+            title: 'Rejestracja nie powiodła się',
+            position: 'bottom-left',
+            status: 'error',
+            duration: 6000,
+            isClosable: true,
+        })
+    }
     return (
         <div className='RegisterView'>
             <HallwayNavigationMenu/>
@@ -76,7 +109,7 @@ export const RegisterView = () => {
                                 />
                             </FormControl>
                             <Button type="submit" colorScheme="green" width="full">
-                                Zarejestruj
+                                {loading ? <Spinner/> : 'Zarejestruj'}
                             </Button>
                         </VStack>
                     </form>
