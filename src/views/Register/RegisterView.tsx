@@ -1,8 +1,9 @@
-import {HallwayNavigationMenu} from "../../components/navigation/HallwayNavigationMenu/HallwayNavigationMenu";
+import {HallwayNavigation} from "../../components/navigation/HallwayNavigation/HallwayNavigation";
 import {Box, Button, Flex, FormControl, FormLabel, Input, Spinner, Text, useToast, VStack} from "@chakra-ui/react";
 import {useFormik} from "formik";
 import {useFetch} from "../../utils/hooks/useFetch";
 import { mainConfig } from "../../config/mainConfig";
+import {useEffect} from "react";
 
 export const RegisterView = () => {
     const [data, loading, error, setRequest] = useFetch(null)
@@ -35,34 +36,36 @@ export const RegisterView = () => {
             })
         }
     });
-    if (data?.success) {
-        toast({
-            title: 'Tworzenie konta powiodło się',
-            position: 'bottom-left',
-            status: 'success',
-            duration: 6000,
-            isClosable: true,
-        })
-        toast({
-            title: 'Potwierdz rejestrację na podanym adresie e-mail',
-            position: 'bottom-left',
-            status: 'info',
-            duration: 6000,
-            isClosable: true,
-        })
-    }
-    if (error) {
-        toast({
-            title: 'Rejestracja nie powiodła się',
-            position: 'bottom-left',
-            status: 'error',
-            duration: 6000,
-            isClosable: true,
-        })
-    }
+    useEffect(() => {
+        if (data?.success) {
+            toast({
+                title: 'Tworzenie konta powiodło się',
+                position: 'bottom-left',
+                status: 'success',
+                duration: 6000,
+                isClosable: true,
+            })
+            toast({
+                title: 'Potwierdz rejestrację na podanym adresie e-mail',
+                position: 'bottom-left',
+                status: 'info',
+                duration: 6000,
+                isClosable: true,
+            })
+        }
+        if (error) {
+            toast({
+                title: 'Rejestracja nie powiodła się',
+                position: 'bottom-left',
+                status: 'error',
+                duration: 6000,
+                isClosable: true,
+            })
+        }
+    }, [data, error])
     return (
         <div className='RegisterView'>
-            <HallwayNavigationMenu/>
+            <HallwayNavigation/>
             <Flex align="center" justify="center" minH='80vh' mt={25}>
                 <Box bgGradient='linear(to-l, green.100, green.200)' p={12} rounded="md" boxShadow='2xl' minW='25vw'>
                     <Text

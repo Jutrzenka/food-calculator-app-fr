@@ -2,7 +2,7 @@ import {NavigationMenu} from "../../common/NavigationMenu/NavigationMenu";
 import {NavButton} from "../../common/NavButton/NavButton";
 import {Spacer} from "@chakra-ui/react";
 
-export const HallwayNavigationMenu = () => {
+export const HallwayNavigation = () => {
     return (
         <div className="HallwayNavigationMenu">
             <NavigationMenu>

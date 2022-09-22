@@ -1,12 +1,12 @@
 import {Center} from "@chakra-ui/react";
-import {HallwayNavigationMenu} from "../../components/navigation/HallwayNavigationMenu/HallwayNavigationMenu";
+import {HallwayNavigation} from "../../components/navigation/HallwayNavigation/HallwayNavigation";
 import {MainArticle} from "../../components/common/MainArticle/MainArticle";
 import {TextArticle} from "../../components/common/TextArticle/TextArticle";
 
 export const HomeView = () => {
     return (
         <div className="HomeView">
-            <HallwayNavigationMenu/>
+            <HallwayNavigation/>
             <Center h='auto' width='100%'>
                 <MainArticle header='MegaFoodCalc:'>
                     <TextArticle>

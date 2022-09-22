@@ -1,4 +1,4 @@
-import {HallwayNavigationMenu} from "../../components/navigation/HallwayNavigationMenu/HallwayNavigationMenu";
+import {HallwayNavigation} from "../../components/navigation/HallwayNavigation/HallwayNavigation";
 import {Center} from "@chakra-ui/react";
 import {MainArticle} from "../../components/common/MainArticle/MainArticle";
 import {TextArticle} from "../../components/common/TextArticle/TextArticle";
@@ -6,7 +6,7 @@ import {TextArticle} from "../../components/common/TextArticle/TextArticle";
 export const AboutView = () => {
     return (
         <div className="AboutView">
-            <HallwayNavigationMenu/>
+            <HallwayNavigation/>
             <Center h='auto' width='100%'>
                 <MainArticle header='Informacje o projekcie:'>
                     <TextArticle>

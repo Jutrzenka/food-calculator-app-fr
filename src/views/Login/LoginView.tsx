@@ -1,9 +1,10 @@
-import {HallwayNavigationMenu} from "../../components/navigation/HallwayNavigationMenu/HallwayNavigationMenu";
+import {HallwayNavigation} from "../../components/navigation/HallwayNavigation/HallwayNavigation";
 import {Box, Button, Flex, FormControl, FormLabel, Input, Link, Spinner, Text, useToast, VStack} from "@chakra-ui/react";
 import {useFormik} from "formik";
 import {Link as ReactLink, useNavigate} from "react-router-dom";
 import {useFetch} from "../../utils/hooks/useFetch";
 import {mainConfig} from "../../config/mainConfig";
+import {useEffect} from "react";
 
 export const LoginView = () => {
     const [data, loading, error, setRequest] = useFetch(null)
@@ -35,22 +36,24 @@ export const LoginView = () => {
             })
         }
     });
-    if (data?.success) {
-        navigate('/register', {replace: true});
-        toast.closeAll();
-    }
-    if (error) {
-        toast({
-            title: 'Logowanie nie powiodło się',
-            position: 'bottom-left',
-            status: 'error',
-            duration: 6000,
-            isClosable: true,
-        })
-    }
+    useEffect(() => {
+        if (data?.success) {
+            navigate('/app/recipes', {replace: true});
+            toast.closeAll();
+        }
+        if (error) {
+            toast({
+                title: 'Logowanie nie powiodło się',
+                position: 'bottom-left',
+                status: 'error',
+                duration: 6000,
+                isClosable: true,
+            })
+        }
+    }, [data, error])
     return (
         <div className='LoginView'>
-            <HallwayNavigationMenu/>
+            <HallwayNavigation/>
             <Flex align="center" justify="center" minH="80vh" mt={25}>
                 <Box bgGradient='linear(to-l, green.100, green.200)' p={12} rounded="md" boxShadow='2xl' minW='25vw'>
                     <Text
