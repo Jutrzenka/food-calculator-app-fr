@@ -8,6 +8,7 @@ import { RegisterView } from './views/Register/RegisterView';
 import {VerifyAccountView} from "./views/VeriffyAccount/VerifyAccountView";
 import {RecipeView} from "./views/Recipe/RecipeView";
 import {ProductView} from "./views/Product/ProductView";
+import {OneRecipeView} from "./views/OneRecipe/OneRecipeView";
 
 export const App = () => {
   return (
@@ -33,6 +34,7 @@ export const App = () => {
                   <Route path="/verify/:email/:registerCode" element={<VerifyAccountView />} />
                   <Route path="/about" element={<AboutView />} />
                   <Route path="/app/recipes" element={<RecipeView />} />
+                  <Route path="/app/recipes/:id" element={<OneRecipeView />} />
                   <Route path="/app/products" element={<ProductView />} />
               </Routes>
           </Box>

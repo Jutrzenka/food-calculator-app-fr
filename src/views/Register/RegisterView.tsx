@@ -46,7 +46,7 @@ export const RegisterView = () => {
                 isClosable: true,
             })
             toast({
-                title: 'Potwierdz rejestrację na podanym adresie e-mail',
+                title: `Potwierdz rejestrację na: ${formik.values.email}`,
                 position: 'bottom-left',
                 status: 'info',
                 duration: 6000,

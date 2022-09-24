@@ -12,7 +12,7 @@ export const ProfileMenu = () => {
         if (data?.success) {
             navigate('/', {replace: true});
             toast({
-                title: 'Udało się wylogować',
+                title: 'Wylogowanie powiodło się',
                 position: 'bottom-left',
                 status: 'success',
                 duration: 6000,
