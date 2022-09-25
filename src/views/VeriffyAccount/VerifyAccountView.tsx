@@ -16,25 +16,36 @@ export const VerifyAccountView = () => {
     const formik = useFormik({
         initialValues: {
             password: "",
+            repeatPassword: "",
         },
-        onSubmit: ({password}) => {
-            toast({
-                title: 'Trwa weryfikacja konta',
-                position: 'bottom-left',
-                status: 'loading',
-                duration: 6000,
-                isClosable: true,
-            })
-            setRequest(`${mainConfig.url}/api/auth/confirm/${email}/${registerCode}`,{
-                method: 'PATCH',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    password,
+        onSubmit: ({password, repeatPassword}) => {
+            if (password !== '' && password === repeatPassword) {
+                toast({
+                    title: 'Trwa weryfikacja konta',
+                    position: 'bottom-left',
+                    status: 'loading',
+                    duration: 6000,
+                    isClosable: true,
                 })
-            })
+                setRequest(`${mainConfig.url}/api/auth/confirm/${email}/${registerCode}`,{
+                    method: 'PATCH',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        password,
+                    })
+                })
+            } else {
+                toast({
+                    title: 'Hasła się nie są takie same',
+                    position: 'bottom-left',
+                    status: 'warning',
+                    duration: 6000,
+                    isClosable: true,
+                })
+            }
         }
     });
     useEffect(() => {
@@ -103,6 +114,17 @@ export const VerifyAccountView = () => {
                                             {show ? 'Ukryj' : 'Pokaż'}
                                         </Button>
                                     </InputRightElement>
+                                </InputGroup>
+                                <FormLabel htmlFor="password" mt='6'>Potwierdź hasło</FormLabel>
+                                <InputGroup size='md'>
+                                    <Input
+                                        id="repeat-password"
+                                        name="repeatPassword"
+                                        type={show ? 'text' : 'password'}
+                                        variant="filled"
+                                        onChange={formik.handleChange}
+                                        value={formik.values.repeatPassword}
+                                    />
                                 </InputGroup>
                             </FormControl>
                             <Button type="submit" colorScheme="green" width="full">

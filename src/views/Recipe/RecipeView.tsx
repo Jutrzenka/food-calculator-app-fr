@@ -24,7 +24,7 @@ export const RecipeView = () => {
         setRecipes(data ? data.data.value : null)
     }, [data])
 
-    const addedObjectFromArray = (element) => {
+    const addedObjectFromArray = (element: string) => {
         setRecipes(prev => [...prev, element] );
     };
 
