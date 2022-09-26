@@ -40,10 +40,10 @@ export const OneElement = ({idRecipe, name, url, nav, onDelete}: Param) => {
         <div className="OneElement">
             {
                 loadingDeleted ?
-                    <Button bgColor='blackAlpha.100' borderRadius='md'>
+                    <Box bgColor='blackAlpha.100' borderRadius='md'>
                         <Flex justifyContent='space-around' justifyItems='center'>
-                            <Button variant='ghost' colorScheme='black' width='60%' textAlign='center' mr='5px' _hover={{bgColor: 'green.200', borderRadius: "md"}}>
-                                <Text>Trwa usuwanie</Text>
+                            <Box width='60%' textAlign='center' mr='5px' _hover={{bgColor: 'green.200', borderRadius: "md"}}>
+                                <Text color='green.500'>Trwa usuwanie</Text>
                                 <Spinner
                                     thickness='4px'
                                     speed='0.85s'
@@ -51,23 +51,21 @@ export const OneElement = ({idRecipe, name, url, nav, onDelete}: Param) => {
                                     color='green.500'
                                     size='md'
                                 />
-                            </Button>
+                            </Box>
                         </Flex>
-                    </Button>
+                    </Box>
                     :
                     <Box bgColor='blackAlpha.100' borderRadius='md'>
                         <Flex justifyContent='space-around' justifyItems='center'>
-                            <Button
-                                 variant='ghost'
-                                 colorScheme='black'
+                            <Box
                                  width='60%'
                                  textAlign='center'
                                  mr='5px'
-                                 _hover={{bgColor: 'green.200', borderRadius: "md"}}
+                                 _hover={{bgColor: 'green.200', borderRadius: "md", cursor: 'pointer'}}
                                  onClick={() => navigate(nav)}
                             >
                                 {name}
-                            </Button>
+                            </Box>
                             <Button
                                  colorScheme='green'
                                  width='40%'
