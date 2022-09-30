@@ -9,6 +9,7 @@ import {VerifyAccountView} from "./views/VeriffyAccount/VerifyAccountView";
 import {RecipeView} from "./views/Recipe/RecipeView";
 import {ProductView} from "./views/Product/ProductView";
 import {OneRecipeView} from "./views/OneRecipe/OneRecipeView";
+import { OneProductView } from "./views/OneProduct/OneProductView";
 
 export const App = () => {
   return (
@@ -36,6 +37,7 @@ export const App = () => {
                   <Route path="/app/recipes" element={<RecipeView />} />
                   <Route path="/app/recipes/:id" element={<OneRecipeView />} />
                   <Route path="/app/products" element={<ProductView />} />
+                  <Route path="/app/products/:id" element={<OneProductView />} />
               </Routes>
           </Box>
         </Box>
