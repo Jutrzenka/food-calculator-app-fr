@@ -2,20 +2,20 @@ import {Box, Button, Flex, Spinner, useToast} from "@chakra-ui/react";
 import {useFetch} from "../../../utils/hooks/useFetch";
 import {useEffect} from "react";
 import {AddIcon} from "@chakra-ui/icons";
-import {mainConfig} from "../../../config/mainConfig";
 
 interface Param {
     onAdded: any,
+    url: string,
 }
 
-export const ButtonAddedElement = ({onAdded}: Param) => {
+export const ButtonAddedElement = ({onAdded, url}: Param) => {
     const [added, loadingAdded, errorAdded, setRequestAdded] = useFetch(null);
     const toast = useToast()
     useEffect(() => {
         if (added?.success) {
             onAdded(added?.data.value)
             toast({
-                title: 'Dodano nowy przepis',
+                title: 'Dodano nowy element',
                 position: 'bottom-left',
                 status: 'success',
                 duration: 6000,
@@ -24,7 +24,7 @@ export const ButtonAddedElement = ({onAdded}: Param) => {
         }
         if (errorAdded) {
             toast({
-                title: 'Nie udało się dodaj nowego przepisu',
+                title: 'Nie udało się dodać nowego elementu',
                 position: 'bottom-left',
                 status: 'error',
                 duration: 6000,
@@ -44,7 +44,7 @@ export const ButtonAddedElement = ({onAdded}: Param) => {
                          mr='5px'
                          _hover={{bgColor: 'green.200', borderRadius: "md"}}
                          onClick={() => {
-                             setRequestAdded(`${mainConfig.url}/api/recipe`, {
+                             setRequestAdded(url, {
                                  method: 'PUT',
                              })
                          }}
@@ -60,7 +60,6 @@ export const ButtonAddedElement = ({onAdded}: Param) => {
                                     size='md'
                                 />
                         }
-
                     </Button>
                 </Flex>
             </Box>

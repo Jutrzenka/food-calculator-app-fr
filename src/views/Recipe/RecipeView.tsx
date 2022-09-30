@@ -40,11 +40,11 @@ export const RecipeView = () => {
         });
     };
 
-    const removeObjectFromArray = (idRecipe: string) => {
+    const removeObjectFromArray = (id: string) => {
         setRecipes((prev: Recipe[] | null) => {
             if (prev === null) return prev;
             return prev.filter(obj => {
-                return obj.idRecipe !== idRecipe;
+                return obj.idRecipe !== id;
             })
         });
     };
@@ -56,12 +56,14 @@ export const RecipeView = () => {
                     <Center h='auto' width='100%'>
                         <Box mt={2.5} mb={5} width='90%'>
                             <SimpleGrid minChildWidth='250px' spacing='5px'>
-                                {recipes ? <ButtonAddedElement onAdded={addedObjectFromArray}/> : null}
+                                {recipes ?
+                                    <ButtonAddedElement onAdded={addedObjectFromArray} url={`${mainConfig.url}/api/recipe`}/>
+                                    : null}
                                 {recipes ? recipes.map((el: Recipe) => <OneElement
                                         key={el.idRecipe}
                                         url={`${mainConfig.url}/api/recipe/${el.idRecipe}`}
                                         nav={`/app/recipes/${el.idRecipe}`}
-                                        idRecipe={el.idRecipe}
+                                        id={el.idRecipe}
                                         name={el.name}
                                         onDelete={removeObjectFromArray}/>
                                     ) :

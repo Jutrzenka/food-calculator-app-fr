@@ -4,20 +4,20 @@ import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 
 interface Param {
-    idRecipe: string,
+    id: string,
     name: string,
     url: string,
     nav: string,
     onDelete: any,
 }
 
-export const OneElement = ({idRecipe, name, url, nav, onDelete}: Param) => {
+export const OneElement = ({id, name, url, nav, onDelete}: Param) => {
     const [deleted, loadingDeleted, errorDeleted, setRequestDeleted] = useFetch(null);
     const toast = useToast()
     const navigate = useNavigate();
     useEffect(() => {
         if (deleted?.success) {
-            onDelete(idRecipe)
+            onDelete(id)
             toast({
                 title: 'Element został usunięty',
                 position: 'bottom-left',
