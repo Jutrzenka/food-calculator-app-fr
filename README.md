@@ -2,8 +2,8 @@
 
 ## :bear: Resources
 **Live demo:** IN PROGRESS \
-**Github frontend:** https://github.com/Jutrzenka/HeadHunterG11-FR \
-**Github backend:** https://github.com/Jutrzenka/HeadHunterG11-BE
+**Github frontend:** https://github.com/Jutrzenka/food-calculator-app-fr \
+**Github backend:** https://github.com/Jutrzenka/food-calculator-app
 ## :cow: Tech Stack
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
