@@ -16,7 +16,7 @@ interface Product {
 }
 
 export const ProductView = () => {
-    const { data } = useStaticFetch(`${mainConfig.url}/api/product`, {
+    const { data } = useStaticFetch(`${mainConfig.url}/api/products`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -58,11 +58,11 @@ export const ProductView = () => {
                         <Box mt={2.5} mb={5} width='90%'>
                             <SimpleGrid minChildWidth='250px' spacing='5px'>
                                 {products ?
-                                    <ButtonAddedElement onAdded={addedObjectFromArray} url={`${mainConfig.url}/api/product`}/>
+                                    <ButtonAddedElement onAdded={addedObjectFromArray} url={`${mainConfig.url}/api/products`}/>
                                     : null}
                                 {products ? products.map((el: Product) => <OneElement
                                         key={el.idProduct}
-                                        url={`${mainConfig.url}/api/product/${el.idProduct}`}
+                                        url={`${mainConfig.url}/api/products/${el.idProduct}`}
                                         nav={`/app/products/${el.idProduct}`}
                                         id={el.idProduct}
                                         name={el.name}

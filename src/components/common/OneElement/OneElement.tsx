@@ -60,7 +60,9 @@ export const OneElement = ({id, name, url, nav, onDelete}: Param) => {
                             <Box
                                  width='60%'
                                  textAlign='center'
-                                 mr='5px'
+                                 display='flex'
+                                 flexDir='column'
+                                 justifyContent='center'
                                  _hover={{bgColor: 'green.200', borderRadius: "md", cursor: 'pointer'}}
                                  onClick={() => navigate(nav)}
                             >

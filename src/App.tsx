@@ -1,5 +1,4 @@
 import {Box} from "@chakra-ui/react";
-import './App.css'
 import {Route, Routes} from "react-router-dom";
 import { HomeView } from './views/Home/HomeView';
 import { LoginView } from './views/Login/LoginView';
@@ -25,8 +24,8 @@ export const App = () => {
           <Box
               w='100%'
               minH='100vh'
-              bg='blackAlpha.300'
-              backdropFilter='blur(20px)'
+              bg='blackAlpha.400'
+              backdropFilter='blur(30px)'
           >
               <Routes>
                   <Route path="/" element={<HomeView />} />

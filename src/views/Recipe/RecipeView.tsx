@@ -16,7 +16,7 @@ interface Recipe {
 }
 
 export const RecipeView = () => {
-    const { data } = useStaticFetch(`${mainConfig.url}/api/recipe`, {
+    const { data } = useStaticFetch(`${mainConfig.url}/api/recipes`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -57,11 +57,11 @@ export const RecipeView = () => {
                         <Box mt={2.5} mb={5} width='90%'>
                             <SimpleGrid minChildWidth='250px' spacing='5px'>
                                 {recipes ?
-                                    <ButtonAddedElement onAdded={addedObjectFromArray} url={`${mainConfig.url}/api/recipe`}/>
+                                    <ButtonAddedElement onAdded={addedObjectFromArray} url={`${mainConfig.url}/api/recipes`}/>
                                     : null}
                                 {recipes ? recipes.map((el: Recipe) => <OneElement
                                         key={el.idRecipe}
-                                        url={`${mainConfig.url}/api/recipe/${el.idRecipe}`}
+                                        url={`${mainConfig.url}/api/recipes/${el.idRecipe}`}
                                         nav={`/app/recipes/${el.idRecipe}`}
                                         id={el.idRecipe}
                                         name={el.name}
