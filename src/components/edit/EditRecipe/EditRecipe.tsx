@@ -7,24 +7,22 @@ import {
     PopoverTrigger, useBoolean,
 } from "@chakra-ui/react";
 import {EditProductForm} from "../EditProductForm/EditProductForm";
+import {EditRecipeForm} from "../EditRecipeForm/EditRecipeForm";
 
 interface Props {
-    product: {
-        idProduct: string,
+    recipe: {
+        idRecipe: string,
         idUser: string,
         name: string,
-        calories: number,
-        carbohydrates: number,
-        fat: number,
-        protein: number,
+        description: string,
     }
-    editProduct: any,
+    editRecipe: any,
 }
 
-export const EditProduct = ({product, editProduct}: Props) => {
+export const EditRecipe = ({recipe, editRecipe}: Props) => {
     const [isEditing, setIsEditing] = useBoolean();
     return (
-        <div className="EditProduct">
+        <div className="EditRecipe">
             <Popover
                 isOpen={isEditing}
                 onOpen={setIsEditing.on}
@@ -46,12 +44,12 @@ export const EditProduct = ({product, editProduct}: Props) => {
                             borderRadius={0}
                             color='whiteAlpha.900'
                         >
-                            {isEditing ? 'Schowaj edycję' : 'Edytuj produkt'}
+                            {isEditing ? 'Schowaj edycję' : 'Edytuj przepis'}
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent>
                         <PopoverBody bgColor='whiteAlpha.600'>
-                            <EditProductForm product={product} editProduct={editProduct}/>
+                            <EditRecipeForm recipe={recipe} editRecipe={editRecipe}/>
                         </PopoverBody>
                     </PopoverContent>
                 </HStack>

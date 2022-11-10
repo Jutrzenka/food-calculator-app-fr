@@ -67,7 +67,7 @@ export const OneProductView = () => {
                                         fontSize='6xl'
                                         color='green.900'
                                     >
-                                        Ładowanie przepisu
+                                        Ładowanie produktu
                                     </CircularProgressLabel>
                                 </CircularProgress>
                             </Center>

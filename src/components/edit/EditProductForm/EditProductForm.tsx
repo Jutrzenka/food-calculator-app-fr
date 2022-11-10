@@ -99,6 +99,7 @@ export const EditProductForm = ({product, editProduct}: Props) => {
                             name="name"
                             type="text"
                             variant="filled"
+                            maxLength={20}
                             onChange={formik.handleChange}
                             value={formik.values.name}
                         />

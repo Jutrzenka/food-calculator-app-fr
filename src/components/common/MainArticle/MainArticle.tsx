@@ -17,6 +17,7 @@ export const MainArticle = ({header, children}:Props) => {
                         bgClip='text'
                         fontSize='6xl'
                         fontWeight='extrabold'
+                        textAlign="center"
                     >
                         {header}
                     </Text>

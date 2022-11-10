@@ -70,7 +70,7 @@ export const ProductView = () => {
                                     ) :
                                     <Center>
                                         <CircularProgress size='500px' isIndeterminate color='green.400'>
-                                            <CircularProgressLabel fontSize='6xl' color='green.900'>Ładowanie przepisów</CircularProgressLabel>
+                                            <CircularProgressLabel fontSize='6xl' color='green.900'>Ładowanie produktów</CircularProgressLabel>
                                         </CircularProgress>
                                     </Center>
                                 }
